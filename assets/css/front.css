@@ -2,7 +2,6 @@
     font-family: Gentium;
     src: url(../frontstyle/fontStyle/清松手寫體1.ttf);
   }
-  p { font-family: Gentium, serif; }
+  .cutefont{ font-family: Gentium, serif; }
   h4 { font-family: Gentium, serif; }
   h3 { font-family: Gentium, serif; }
-  .page-scroll{ font-family: Gentium, serif; }
