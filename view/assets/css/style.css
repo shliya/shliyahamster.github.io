@@ -2,6 +2,8 @@ img {
     position: absolute;
 }
 div {
+    height: 90vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     overflow: hidden;

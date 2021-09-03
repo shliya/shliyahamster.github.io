@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html>
 
 <head>
     <title>Pop meownus</title>
@@ -31,14 +31,57 @@
     <div id="meownus_div" style="min-width: fit-content; min-height: fit-content;">
         <img id="meownus" src="./assets/up.png" />
         <img id="meownus_pop" src="./assets/pop.png" style="visibility: hidden;" />
-    </div>
         <div id="counter"></div>
+    </div>
 </body>
 
-<!--====== Jquery js ======-->
-<script src="../assets/js/vendor/jquery-3.5.1-min.js"></script>
-<script src="../assets/js/vendor/modernizr-3.7.1.min.js"></script>
+<script>
+    window.onload = () => {
+        "use strict";
+        let meownusDiv = document.querySelector("#meownus_div");
+        let meownus = document.querySelector("#meownus");
+        let meownusPop = document.querySelector("#meownus_pop")
+        let pop_count = 0;
+        let showCount = document.querySelector("#counter")
+        let sound_video = new Audio("");
 
-<script type="module" src="./assets/js/popcatLib.js"></script>
+        var storage = {};
+        storage.load = function () {
+            var count = localStorage.getItem("pop_count");
+            if (count !== null) {
+                pop_count = parseInt(count);
+                counter.innerHTML = pop_count;
+            }
+        };
+        storage.save = function () {
+            localStorage.setItem("pop_count", pop_count);
+        }
+        const playSound = () => {
+            sound_video.currentTime = 0;
+            sound_video.play();
+        }
+        const popMethod = () => {
+            // playSound();
+            meownus.setAttribute("style", "visibility: hidden;")
+            meownusPop.setAttribute("style", "visibility: unset;")
+        }
+        const downMethod = () => {
+            meownusPop.setAttribute("style", "visibility: hidden;")
+            meownus.setAttribute("style", "visibility: unset;")
+        }
+        const addCount = () => {
+            pop_count++;
+            window.localStorage.setItem("pop_count", pop_count)
+            counter.innerHTML = pop_count
+        }
+        meownusDiv.addEventListener("mousedown", function (e) {
+            addCount();
+            popMethod();
+        })
+        meownusDiv.addEventListener("mouseup", function (e) {
+            downMethod()
+        })
+    }
+</script>
 
 </html>

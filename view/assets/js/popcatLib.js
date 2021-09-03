@@ -7,7 +7,8 @@ $(document).ready(function () {
     let showCount = $("#counter")
     let sound_video = new Audio("");
     const playSound = () => {
-        
+        sound_video.currentTime = 0;
+        sound_video.play();
     }
     const popMethod = () => {
         // playSound();
@@ -21,11 +22,11 @@ $(document).ready(function () {
     const addCount = ()=>{
         pop_count++;
         window.localStorage.setItem("pop_count",pop_count)
-        showCount.html(Number(pop_count));
+        // showCount.html(Number(pop_count));
     }
     const storageGet = ()=>{
         let count = window.localStorage.getItem("pop_count")
-        showCount.html(Number(count));
+        // showCount.html(Number(count));
     }
     storageGet();
 
