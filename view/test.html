@@ -37,31 +37,17 @@
 
 <script>
     window.onload = () => {
-        "use strict";
-        let meownusDiv = document.querySelector("#meownus_div");
-        let meownus = document.querySelector("#meownus");
-        let meownusPop = document.querySelector("#meownus_pop")
+        let meownusDiv = document.getElementById("meownus_div");
+        let meownus = document.getElementById("meownus");
+        let meownusPop = document.getElementById("meownus_pop")
         let pop_count = 0;
-        let showCount = document.querySelector("#counter")
-        let sound_video = new Audio("");
+        let showCount = document.getElementById("counter")
+        // let sound_video = new Audio("");
 
-        var storage = {};
-        storage.load = function () {
-            var count = localStorage.getItem("pop_count");
-            if (count !== null) {
-                pop_count = parseInt(count);
-                counter.innerHTML = pop_count;
-            }
-        };
-        storage.save = function () {
-            localStorage.setItem("pop_count", pop_count);
-        }
-        const playSound = () => {
-            sound_video.currentTime = 0;
-            sound_video.play();
-        }
+        // const playSound = () => {
+        //     sound_video.play();
+        // }
         const popMethod = () => {
-            // playSound();
             meownus.setAttribute("style", "visibility: hidden;")
             meownusPop.setAttribute("style", "visibility: unset;")
         }
