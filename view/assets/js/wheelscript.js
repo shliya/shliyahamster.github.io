@@ -47,20 +47,21 @@ const createConicGradient = (prizesData) => {
 const setNewWheel = () => {
   const test = document.querySelector("#names").value;
   let textArray = test.split("\n");
-  let colroArray = ['hsl(197 30% 43%)', 'hsl(173 58% 39%)', 'hsl(43 74% 66%)', 'hsl(27 87% 67%)', 'hsl(12 76% 61%)', 'hsl(350 60% 52%)', 'hsl(91 43% 54%)', 'hsl(140 36% 74%)']
+  // let colorArray = ['hsl(197 30% 43%)', 'hsl(173 58% 39%)', 'hsl(43 74% 66%)', 'hsl(27 87% 67%)', 'hsl(12 76% 61%)', 'hsl(350 60% 52%)', 'hsl(91 43% 54%)', 'hsl(140 36% 74%)']
+  let colorArray = ['#fff3dc','#ffe1e1','#fff3dc','#ffe1e1','#fff3dc','#ffe1e1','#fff3dc','#ffe1e1']
   let reaction = "laughing";
   let prizesData = [];
   textArray = textArray.filter(word => word !== "")
   let colorIndex = 0
   for (let i = 0; i < textArray.length; i++) {
-    if (i > colroArray.length-1) {
-      colorIndex = i - colroArray.length
+    if (i > colorArray.length-1) {
+      colorIndex = i - colorArray.length
     } else {
       colorIndex = i;
     }
     prizesData.push({
       text: textArray[i],
-      color: colroArray[colorIndex],
+      color: colorArray[colorIndex],
       reaction: reaction
     })
   }
