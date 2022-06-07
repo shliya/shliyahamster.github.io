@@ -165,13 +165,13 @@ body {
 .text{
   color: #FFFFFF;
   font-weight: 600;
-  font-size: 1.5vw;
+  font-size: 3vw;
   letter-spacing: .2vw;
   font-family: "ar-yuanb5std", sans-serif;
 }
 /* Selected prize animation */
 .prize.selected .text {
-  color: #6c6577;
+  color: #FFFFFF;
   -webkit-animation: selected 800ms ease;
           animation: selected 800ms ease;
 }
