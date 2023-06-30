@@ -1,14 +1,40 @@
-img {
-    position: absolute;
-}
+
 div {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 #counter {
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Style buttons */
+.btn {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+.box_fixed {
+  justify-content: right;
+  /* width: 100px;
+  height: 100px;
+  background: blue;
+  position: fixed;
+  left: 0;
+  bottom: 0; */
+}
+
+#setArea {
+  display: grid;
 }

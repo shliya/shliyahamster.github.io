@@ -1,52 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>轉盤實驗測試中</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel='stylesheet' href='https://codepen.io/hexagoncircle/pen/vYxKLOa.css'>
-    <link rel="stylesheet" href="./assets/css/wheelstyle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://codepen.io/hexagoncircle/pen/vYxKLOa.css"
+    />
+    <link rel="stylesheet" href="./assets/css/wheelstyle.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- partial:index.partial.html -->
     <div class="deal-wheel">
-        <ul class="spinner"></ul>
-        <figure class="cap">
-            <!-- Grim reaper SVG import -->
-            <select id="select-reaction" class="select">
-                <option value="resting">resting</option>
-                <option value="dancing">dancing</option>
-                <option value="laughing">laughing</option>
-                <option value="shocked">shocked</option>
-            </select>
+      <ul class="spinner"></ul>
+      <figure class="cap">
+        <!-- Grim reaper SVG import -->
+        <select id="select-reaction" class="select">
+          <option value="resting">resting</option>
+          <option value="dancing">dancing</option>
+          <option value="laughing">laughing</option>
+          <option value="shocked">shocked</option>
+        </select>
 
-            <img src="./assets/center.svg" alt="">
-            <svg class="grim-reaper" data-reaction="resting" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 582 653">
-            </svg>
-        </figure>
-        <div class="ticker"></div>
-        <button class="btn-spin">SKIP</button>
-        <!-- partial -->
+        <img id="customImg" style="width: 100%" alt="" />
+        <svg
+          class="grim-reaper"
+          data-reaction="resting"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 582 653"
+        ></svg>
+      </figure>
+      <div class="ticker"></div>
+      <button class="btn-spin">SKIP</button>
+      <!-- partial -->
     </div>
-    <div id="setArea">
-        <textarea id="names" placeholder="請在這裡輸入人姓名，並用不同的行分隔。" class="names"></textarea>
-        <button id="setwheel">新增轉盤項目</button>
+    <div id="settingdialog">
+      <dialog id="infoModal">
+        <div id="setArea">
+          <textarea
+            style="width: 100%; height: 200px"
+            id="names"
+            placeholder="請在這裡輸入抽獎內容，用行做分割喔。"
+            class="names"
+          ></textarea>
+          <br />
+          <button class="button button2" id="setwheel">新增轉盤項目</button>
+          <br />
+          <label class="btn btn-info">
+            <input id="file-uploader" style="display: none" type="file" />
+            <i class="fa fa-photo"></i> 上傳自己喜歡ㄉ圖片
+          </label>
+          <br />
+          <label>轉盤顏色1: <input type="color" class="colorpicker" /></label>
+          <label>轉盤顏色2: <input type="color" class="colorpicker" /></label>
+        </div>
+        <br />
+        <button class="button button2" id="close">關閉設定</button>
+      </dialog>
     </div>
-    <script src="./assets/js/wheelscript.js"></script>
-    <script>
-        (function (d) {
-            var config = {
-                kitId: 'bxy7vae',
-                scriptTimeout: 3000,
-                async: true
-            },
-                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
-        })(document);
-    </script>
-</body>
 
+    <div class="box_fixed">
+      <img id="show" src="./assets/settings-gears.png" style="width: 10%" />
+    </div>
+
+    <script type="module" src="./assets/js/wheelscript.js"></script>
+    <script type="module" src="./assets/js/sampleDBscript.js"></script>
+    <script type="module" src="./assets/js/uploadimg.js"></script>
+    <script type="module" src="./assets/js/dialog.js"></script>
+  </body>
 </html>

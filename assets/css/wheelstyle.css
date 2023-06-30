@@ -25,8 +25,8 @@ body {
   /* --lg: linear-gradient(
       hsl(var(--lg-hs) 0%) 0 var(--lg-stop),
       hsl(var(--lg-hs) 20%) var(--lg-stop) 100%); */
-  --lg:#7e6785;
-  
+  --lg: #7e6785;
+
   position: relative;
   display: grid;
   grid-gap: calc(var(--size) / 20);
@@ -75,9 +75,9 @@ body {
   transform-origin: center right;
   transform: rotate(var(--rotate));
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .cap {
@@ -105,20 +105,20 @@ body {
   background: var(--lg);
   z-index: 1;
   -webkit-clip-path: polygon(20% 0, 100% 50%, 20% 100%, 0% 50%);
-          clip-path: polygon(20% 0, 100% 50%, 20% 100%, 0% 50%);
+  clip-path: polygon(20% 0, 100% 50%, 20% 100%, 0% 50%);
   transform-origin: center left;
 }
 
 .btn-spin {
   color: hsl(0deg 0% 100%);
-  background: var(--lg);
+  background: #b39066;
   border: none;
   font-family: "ar-yuanb5std", sans-serif;
   /* font-family: inherit; */
   font-size: 1.5vw;
   line-height: inherit;
   /* text-transform: inherit; */
-  letter-spacing: .2vw;
+  letter-spacing: 0.2vw;
   padding: 0.9rem 2rem 1rem;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -147,7 +147,7 @@ body {
 
 .is-spinning .ticker {
   -webkit-animation: tick 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
-          animation: tick 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: tick 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @-webkit-keyframes tick {
@@ -162,18 +162,18 @@ body {
   }
 }
 
-.text{
-  color: #FFFFFF;
+.text {
+  color: #ffffff;
   font-weight: 600;
   font-size: 3vw;
-  letter-spacing: .2vw;
+  letter-spacing: 0.2vw;
   font-family: "ar-yuanb5std", sans-serif;
 }
 /* Selected prize animation */
 .prize.selected .text {
-  color: #FFFFFF;
+  color: #ffffff;
   -webkit-animation: selected 800ms ease;
-          animation: selected 800ms ease;
+  animation: selected 800ms ease;
 }
 
 @-webkit-keyframes selected {
@@ -218,16 +218,37 @@ body {
   }
 }
 
-.ribbon::after{
-content: "";
-position: absolute;
-display: block;
-top: -4vw;
-right: -7vw;
-width: 22vw;
-height: 32vw;
-background-image: url(img/ribbon.png);
-background-size: contain;
-background-repeat: no-repeat;
+.ribbon::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -4vw;
+  right: -7vw;
+  width: 22vw;
+  height: 32vw;
+  background-image: url(img/ribbon.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
+.button {
+  background-color: #b39066; /* Green */
+  border: none;
+  color: white;
+  padding: 7.5px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  letter-spacing: 0.2vw;
+  border-radius: 0.25rem;
+}
+
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
