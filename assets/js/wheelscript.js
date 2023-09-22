@@ -39,7 +39,11 @@ function initWhells(wheels) {
 
     const createConicGradient = async (prizesData) => {
       if (localStorage.getItem("profile") === null) {
-        await sampleDB.getDefaultProfile();
+        let defaultJson = {
+          colorArray: ["#FFFF93", "#FFE153"],
+          wheelImg: "",
+        };
+        localStorage.setItem("profile", JSON.stringify(defaultJson));
       }
       profile = JSON.parse(localStorage.getItem("profile"));
       customImg.src = profile.wheelImg;

@@ -19,6 +19,7 @@ body {
 }
 
 .deal-wheel {
+  margin-top: 10vh;
   --size: clamp(250px, 80vmin, 700px);
   --lg-hs: 0 3%;
   --lg-stop: 50%;
