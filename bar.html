@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>單列拉霸機</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: transparent;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .slot-container {
+                display: inline-block;
+                border: 5px solid #fff;
+                border-radius: 10px;
+                background-color: transparent;
+                padding: 20px;
+            }
+
+            .slot {
+                width: 320px;
+                height: 120px;
+                margin: 0 auto;
+                background: #96bce1;
+                border: 4px solid #fff;
+                border-radius: 24px;
+                box-sizing: border-box;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .slot-list {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+                will-change: transform;
+            }
+
+            .slot-item {
+                width: 100%;
+                height: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: clamp(32px, 8vw, 64px);
+                color: #fff;
+                font-family: inherit;
+                font-weight: bold;
+                box-sizing: border-box;
+                user-select: none;
+                white-space: pre-line;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .spin-button {
+                margin-top: 30px;
+                padding: 10px 30px;
+                font-size: 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #28a745;
+                color: white;
+                cursor: pointer;
+            }
+
+            .spin-button:active {
+                background-color: #218838;
+            }
+
+            .box_fixed {
+                position: fixed;
+                right: 24px;
+                bottom: 24px;
+                z-index: 1000;
+                background: none;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>拉拉看不吃虧</h1>
+        <div class="slot-container">
+            <div id="slot" class="slot">
+                <div id="slotList" class="slot-list"></div>
+            </div>
+        </div>
+        <br />
+        <button class="spin-button" onclick="spin()">拉一下</button>
+
+        <div id="settingdialog">
+            <dialog id="infoModal">
+                <div id="setArea">
+                    <h2 style="color: #222">設定獎項</h2>
+                    <input
+                        id="prizeInput"
+                        type="text"
+                        placeholder="輸入獎項"
+                        style="
+                            width: 70%;
+                            padding: 8px;
+                            border-radius: 4px;
+                            border: 1px solid #ccc;
+                        "
+                    />
+                    <button
+                        id="addPrizeBtn"
+                        style="
+                            padding: 8px 16px;
+                            border-radius: 4px;
+                            border: none;
+                            background: #28a745;
+                            color: #fff;
+                            cursor: pointer;
+                        "
+                    >
+                        新增
+                    </button>
+                    <ul
+                        id="prizeList"
+                        style="list-style: none; padding: 0; margin-top: 16px"
+                    ></ul>
+                </div>
+                <br />
+                <button class="button button2" id="close">關閉設定</button>
+            </dialog>
+        </div>
+
+        <div class="box_fixed">
+            <img
+                id="show"
+                src="./assets/settings-gears.png"
+                style="width: 10%"
+            />
+        </div>
+
+        <script>
+            const slotList = document.getElementById('slotList');
+            // 新增獎項功能
+            let prizes = [];
+            // 這些元素現在在 dialog 裡
+            const prizeInput = document.getElementById('prizeInput');
+            const addPrizeBtn = document.getElementById('addPrizeBtn');
+            const prizeList = document.getElementById('prizeList');
+            const infoModal = document.getElementById('infoModal');
+            const showBtn = document.getElementById('show');
+            const closeBtn = document.getElementById('close');
+
+            function renderPrizeList() {
+                prizeList.innerHTML = '';
+                prizes.forEach((prize, idx) => {
+                    const li = document.createElement('li');
+                    li.style.display = 'flex';
+                    li.style.justifyContent = 'space-between';
+                    li.style.alignItems = 'center';
+                    li.style.background = '#eee';
+                    li.style.color = '#222';
+                    li.style.padding = '6px 10px';
+                    li.style.marginBottom = '6px';
+                    li.style.borderRadius = '4px';
+                    li.innerHTML = `<span>${prize}</span><button style="background:#dc3545;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;" onclick="deletePrize(${idx})">刪除</button>`;
+                    prizeList.appendChild(li);
+                });
+            }
+
+            function deletePrize(idx) {
+                prizes.splice(idx, 1);
+                renderPrizeList();
+            }
+            window.deletePrize = deletePrize;
+
+            addPrizeBtn.onclick = function () {
+                const val = prizeInput.value.trim();
+                if (val) {
+                    prizes.push(val);
+                    prizeInput.value = '';
+                    renderPrizeList();
+                    renderSlotList();
+                }
+            };
+
+            renderPrizeList();
+
+            // 彈窗開關
+            showBtn.onclick = () => infoModal.showModal();
+            closeBtn.onclick = () => infoModal.close();
+
+            // 更新 slot-list 顯示
+            function renderSlotList(selectedIdx = 0, items = prizes) {
+                slotList.innerHTML = '';
+                if (items.length === 0) {
+                    const div = document.createElement('div');
+                    div.className = 'slot-item';
+                    div.textContent = '';
+                    slotList.appendChild(div);
+                } else {
+                    items.forEach((prize) => {
+                        const div = document.createElement('div');
+                        div.className = 'slot-item';
+                        div.textContent = prize;
+                        slotList.appendChild(div);
+                    });
+                }
+                // 初始顯示第一個
+                const itemHeight = 120;
+                slotList.style.transform = `translateY(-${
+                    selectedIdx * itemHeight
+                }px)`;
+            }
+            renderSlotList();
+
+            function spin() {
+                if (prizes.length === 0) {
+                    renderSlotList();
+                    return;
+                }
+                const itemHeight = 120;
+                const totalItems = prizes.length;
+                const spinRounds = 8; // 至少轉幾圈
+                const finalIdx = Math.floor(Math.random() * totalItems);
+                // 動畫內容：複製多份，確保夠長
+                let animItems = [];
+                for (let i = 0; i < spinRounds; i++)
+                    animItems = animItems.concat(prizes);
+                animItems = animItems.concat(prizes);
+                renderSlotList(0, animItems);
+                // 動畫開始前，定位到第一個
+                slotList.style.transition = 'none';
+                slotList.style.transform = `translateY(0)`;
+                setTimeout(() => {
+                    slotList.style.transition =
+                        'transform 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
+                    // 目標位置：最後一圈的中獎項目
+                    const targetIdx = spinRounds * totalItems + finalIdx;
+                    slotList.style.transform = `translateY(-${
+                        targetIdx * itemHeight
+                    }px)`;
+                }, 30);
+                // 動畫結束後重設內容與位置，只保留一份獎項
+                setTimeout(() => {
+                    renderSlotList(finalIdx, prizes);
+                    slotList.style.transition = 'none';
+                    slotList.style.transform = `translateY(-${
+                        finalIdx * itemHeight
+                    }px)`;
+                }, 1300);
+            }
+        </script>
+    </body>
+</html>
