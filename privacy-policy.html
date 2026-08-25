@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隱私權政策 — 發文小助手</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px;
+         font-family: "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+         line-height: 1.85; }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  h2 { font-size: 19px; margin-top: 36px; border-bottom: 1px solid #8884; padding-bottom: 6px; }
+  .updated { color: #888; font-size: 14px; margin-top: 0; }
+  ul { padding-left: 22px; }
+  li { margin: 7px 0; }
+  code { background: #8882; padding: 1px 5px; border-radius: 4px; font-size: 90%; }
+  .box { border: 1px solid #8884; border-radius: 8px; padding: 14px 18px; margin: 20px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 14px 0; }
+  th, td { border: 1px solid #8884; padding: 8px 10px; text-align: left; font-size: 15px; }
+  th { background: #8881; }
+  footer { margin-top: 50px; color: #888; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<h1>隱私權政策</h1>
+<p class="updated">發文小助手（Live Assistant）｜最後更新：2026 年 8 月 24 日</p>
+
+<div class="box">
+  <strong>摘要：</strong>本應用程式是一個安裝在你自己電腦上的桌面工具。
+  它<strong>沒有伺服器</strong>，也<strong>不會把你的資料傳送給我們或任何第三方</strong>。
+  所有資料都只存在你的電腦裡，你隨時可以自行刪除。
+</div>
+
+<h2>1. 本服務是什麼</h2>
+<p>
+  發文小助手是一個在使用者電腦本機執行的桌面應用程式，用途是協助內容創作者
+  把自己原創的貼文與影片，一次發佈到多個社群平台
+  （X／Twitter、Threads、YouTube、Facebook 粉絲專頁）。
+</p>
+<p>
+  <strong>本應用程式沒有後端伺服器。</strong>
+  所有網路連線都是由使用者的電腦直接送到各社群平台的官方 API，
+  不會經過我們或任何中介伺服器。
+</p>
+
+<h2>2. 我們蒐集哪些資料</h2>
+<p><strong>我們（開發者）不蒐集任何資料。</strong>本應用程式沒有分析工具、沒有回報機制、沒有錯誤追蹤服務。</p>
+<p>應用程式會在你的電腦本機儲存以下資料，純粹為了讓功能可以運作：</p>
+
+<table>
+  <tr><th>資料項目</th><th>用途</th><th>儲存位置</th></tr>
+  <tr>
+    <td>各平台的授權權杖（access token / refresh token）</td>
+    <td>代表你發佈內容</td>
+    <td>本機，經作業系統金鑰加密</td>
+  </tr>
+  <tr>
+    <td>已連結帳號的名稱與頭像網址</td>
+    <td>在介面上顯示目前連到哪個帳號</td>
+    <td>本機</td>
+  </tr>
+  <tr>
+    <td>排程中的貼文內容與時間</td>
+    <td>時間到時自動發佈</td>
+    <td>本機</td>
+  </tr>
+  <tr>
+    <td>最近 200 筆發送紀錄</td>
+    <td>讓你查看成功／失敗結果</td>
+    <td>本機</td>
+  </tr>
+  <tr>
+    <td>你選擇的圖片／影片檔案路徑</td>
+    <td>上傳時讀取檔案</td>
+    <td>本機（檔案本身不會被複製）</td>
+  </tr>
+</table>
+
+<h2>3. 資料存在哪裡</h2>
+<p>
+  所有資料儲存在你電腦的使用者資料夾中
+  （Windows 為 <code>%APPDATA%\live-assistant\data.json</code>）。
+</p>
+<p>
+  授權權杖使用作業系統提供的加密機制保護
+  （Windows 為 DPAPI），加密金鑰綁定你的 Windows 使用者帳戶。
+  即使有人複製了這個檔案到另一台電腦，也無法解密其中的權杖。
+</p>
+
+<h2>4. 我們如何使用各平台的 API</h2>
+<p>本應用程式僅執行使用者主動要求的動作：</p>
+<ul>
+  <li><strong>發佈內容</strong>：把使用者自行撰寫、且自己擁有的內容，發佈到使用者本人已授權的帳號</li>
+  <li><strong>上傳媒體</strong>：把使用者選擇的本機圖片或影片上傳到其本人的帳號</li>
+  <li><strong>讀取帳號基本資料</strong>：僅取得已授權帳號的名稱與頭像，用於在介面顯示目前連結的是哪個帳號，避免發錯帳號</li>
+</ul>
+<p><strong>本應用程式不會：</strong></p>
+<ul>
+  <li>蒐集、儲存或分析任何平台上的公開資料或他人內容</li>
+  <li>讀取時間軸、搜尋結果或任何非授權帳號本人的資料</li>
+  <li>將任何內容顯示給授權帳號本人以外的任何人</li>
+  <li>將任何資料轉售、分享或提供給第三方</li>
+  <li>進行情緒分析、機器學習訓練或任何形式的資料分析</li>
+  <li>在未經使用者主動操作的情況下自行發佈內容</li>
+</ul>
+
+<h2>5. YouTube API 服務</h2>
+<p>
+  本應用程式使用 YouTube API 服務。使用本應用程式的 YouTube 相關功能，
+  即表示你同意受
+  <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube 服務條款</a>
+  約束。
+</p>
+<p>
+  Google 如何處理資料，請參閱
+  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 隱私權政策</a>。
+</p>
+<p>
+  你可以隨時透過
+  <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google 安全性設定頁</a>
+  撤銷本應用程式對你 YouTube 帳號的存取權。
+</p>
+<p>
+  透過本應用程式上傳影片前，使用者必須主動勾選聲明，
+  確認上傳內容為其本人擁有的原創內容，且符合 YouTube 社群規範。
+</p>
+
+<h2>6. Meta 平台服務（Facebook 粉絲專頁 與 Threads）</h2>
+<p>
+  本應用程式使用 Meta 的 Graph API 與 Threads API，僅執行以下動作：
+</p>
+<ul>
+  <li><strong>Facebook 粉絲專頁</strong>：讀取使用者可管理的粉專清單
+    （<code>pages_show_list</code>、<code>pages_read_engagement</code>），
+    並將使用者自行撰寫的內容發佈到其選擇的粉專
+    （<code>pages_manage_posts</code>）</li>
+  <li><strong>Threads</strong>：讀取已授權帳號的名稱與頭像
+    （<code>threads_basic</code>），並發佈使用者自行撰寫的內容
+    （<code>threads_content_publish</code>）</li>
+</ul>
+<p>
+  <strong>本應用程式不會讀取粉專的洞察報告、訊息、留言或任何粉絲資料</strong>，
+  也不會讀取使用者本人帳號以外的任何內容。取得的粉專存取權杖僅加密儲存於
+  使用者本機，不會傳送到任何伺服器。
+</p>
+<p>
+  你可以隨時撤銷授權：
+  <a href="https://www.facebook.com/settings?tab=applications" target="_blank" rel="noopener">Facebook 應用程式與網站設定</a>、
+  <a href="https://www.threads.com/settings/account" target="_blank" rel="noopener">Threads 帳號設定</a>。
+</p>
+
+<h2>7. 你如何刪除自己的資料</h2>
+<p>因為所有資料都只存在你自己的電腦，你隨時可以完全自行刪除，不需要向任何人提出申請：</p>
+<ul>
+  <li><strong>解除單一帳號</strong>：在應用程式的「帳號設定」中按「移除」，該帳號的權杖會立即從本機刪除</li>
+  <li><strong>刪除全部資料</strong>：直接刪除 <code>%APPDATA%\live-assistant\</code> 這個資料夾</li>
+  <li><strong>撤銷平台端授權</strong>：到各平台的應用程式授權管理頁面移除授權
+    （<a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google</a>、
+    <a href="https://x.com/settings/connected_apps" target="_blank" rel="noopener">X</a>、
+    <a href="https://www.threads.com/settings/account" target="_blank" rel="noopener">Threads</a>、
+    <a href="https://www.facebook.com/settings?tab=applications" target="_blank" rel="noopener">Facebook</a>）</li>
+</ul>
+<p>
+  由於我們從未取得你的任何資料，因此沒有任何資料需要我們代為刪除。
+  若你仍希望提出資料刪除請求，可透過下方聯絡方式與我們聯繫，我們將於 30 天內回覆。
+</p>
+
+<h2>8. 兒童隱私</h2>
+<p>本應用程式並非針對 13 歲以下兒童設計，我們不會在知情的情況下向兒童蒐集任何資料。</p>
+
+<h2>9. 政策變更</h2>
+<p>若本政策有所變更，我們會更新本頁面的「最後更新」日期。重大變更將於應用程式內告知。</p>
+
+<h2>10. 聯絡方式</h2>
+<p>對本隱私權政策有任何疑問，請聯絡：<a href="mailto:shiliyahamster@gmail.com">shiliyahamster@gmail.com</a></p>
+
+<footer>
+  發文小助手是獨立開發的工具，與 X Corp.、Meta Platforms, Inc.、
+  Google LLC 或 YouTube 均無隸屬關係，亦未獲其背書。
+</footer>
+
+</body>
+</html>
